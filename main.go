@@ -10,8 +10,8 @@ func main() {
 	list.InsertAtBack(20)
 	list.InsertAtBack(10)
 	list.InsertAtBack(5)
-	list.InsertAtFront(100)
 	list.InsertAt(15, 3)
+	list.RemoveAt(4)
 	list.PrintList()
-	list.GetMid()
+
 }

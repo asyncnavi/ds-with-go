@@ -13,7 +13,7 @@ type LList struct {
 	head *Node
 }
 
-// Print Linked List
+// Printing the list
 
 func (list *LList) PrintList() {
 	current := list.head // First Element
@@ -24,10 +24,25 @@ func (list *LList) PrintList() {
 	}
 }
 
-// check if is empty or not
+// Check if is empty or not
 
 func (list *LList) IsEmpty() bool {
 	return list.head == nil
+}
+
+// Count the number of element
+
+func (list *LList) Count() {
+
+	count := 0
+	current := list.head
+
+	for current != nil {
+		count++
+		current = current.next
+	}
+
+	fmt.Println("Count : ")
 }
 
 // Inserting at back
@@ -62,7 +77,7 @@ func (list *LList) InsertAtFront(data int) {
 	list.head = newNode
 }
 
-// Insert at
+// Insert at a specific index
 
 func (list *LList) InsertAt(data, index int) {
 	if list.head == nil && index != 0 {
@@ -86,19 +101,17 @@ func (list *LList) InsertAt(data, index int) {
 		}
 	}
 
-	// check if the index already exists or not
-
 	if current.next == nil {
 		current.next = &Node{data: data, next: nil}
 		return
 	}
-	// Creating new Node
+
 	newNode := &Node{data: data, next: current.next}
 
 	current.next = newNode
 }
 
-// find middle
+// Find the middle
 
 func (list *LList) GetMid() int {
 	slowPtr := list.head
@@ -112,19 +125,96 @@ func (list *LList) GetMid() int {
 	return slowPtr.data
 }
 
-// Count the number of element
+// Delete : At the end
 
-func (list *LList) Count() {
+func (list *LList) RemoveAtEnd() {
+	if list.IsEmpty() {
+		return
+	}
 
-	count := 0
+	if list.head.next == nil {
+		list.head = nil
+		return
+	}
 	current := list.head
 
-	for current != nil {
-		count++
+	for current.next.next != nil {
 		current = current.next
 	}
 
-	fmt.Println("Count : ")
+	current.next = nil
 }
 
-// Reversing the linkedlist
+// Delete:  from Front
+
+func (list *LList) DeleteFromFront() {
+	if list.IsEmpty() {
+		return
+	}
+
+	if list.head.next == nil {
+		list.head = nil
+		return
+	}
+
+	list.head = list.head.next
+
+}
+
+// Delete : The middle Element
+
+func (list *LList) DeleteAtMiddle() {
+	if list.IsEmpty() {
+		return
+	}
+
+	if list.head.next == nil {
+		list.head = nil
+		return
+	}
+
+	var prev *Node
+	slowPtr := list.head
+	fastPtr := list.head
+
+	for fastPtr != nil && fastPtr.next != nil {
+		prev = slowPtr
+		slowPtr = slowPtr.next
+		fastPtr = fastPtr.next.next
+	}
+
+	prev.next = slowPtr.next
+
+}
+
+// Delete : at specific index
+
+func (list *LList) RemoveAt(index int) {
+	if list.IsEmpty() {
+		fmt.Println("No node to delete : List is empty")
+		return
+	}
+
+	if list.head.next == nil {
+		list.head = nil
+		return
+	}
+
+	current := list.head
+
+	for i := 0; i < index-1; i++ {
+		if current.next != nil {
+			current = current.next
+		} else {
+			fmt.Println("Invalid index")
+			return
+		}
+	}
+
+	if current.next.next == nil {
+		current.next = nil
+		return
+	}
+
+	current.next = current.next.next
+}
