@@ -10,8 +10,10 @@ func main() {
 	list.InsertAtBack(20)
 	list.InsertAtBack(10)
 	list.InsertAtBack(5)
-	list.InsertAt(15, 3)
-	list.RemoveAt(4)
-	list.PrintList()
+	list.InsertAtBack(10)
 
+	list.PrintList()
+	linked_list.NthFromEnd(list, 5)
+	linked_list.MoveLastToFront(list)
+	list.PrintList()
 }

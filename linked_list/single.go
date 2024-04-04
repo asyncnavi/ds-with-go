@@ -10,39 +10,51 @@ type Node struct {
 }
 
 type LList struct {
-	head *Node
+	Head *Node
 }
 
 // Printing the list
 
 func (list *LList) PrintList() {
-	current := list.head // First Element
-
+	current := list.Head // First Element
+	fmt.Print("Linked List : [ ")
 	for current != nil {
-		fmt.Println(current.data)
+		if current.next == nil {
+			fmt.Printf("%d", current.data)
+		} else {
+			fmt.Printf("%d, ", current.data)
+		}
 		current = current.next
 	}
+	fmt.Print(" ]\n")
 }
 
 // Check if is empty or not
 
 func (list *LList) IsEmpty() bool {
-	return list.head == nil
+	return list.Head == nil
 }
 
-// Count the number of element
-
-func (list *LList) Count() {
+/*
+		GetOrPrintSize  print or return the size of Linked List
+		if `p = true` print and return
+	    else return
+*/
+func (list *LList) GetOrPrintSize(p bool) int {
 
 	count := 0
-	current := list.head
+	current := list.Head
 
 	for current != nil {
 		count++
 		current = current.next
 	}
+	if p {
+		fmt.Printf("List Size : %d \n", count)
+		return count
+	}
 
-	fmt.Println("Count : ")
+	return count
 }
 
 // Inserting at back
@@ -50,11 +62,11 @@ func (list *LList) Count() {
 func (list *LList) InsertAtBack(data int) {
 	newNode := &Node{data: data, next: nil}
 	if list.IsEmpty() {
-		list.head = newNode
+		list.Head = newNode
 		return
 	}
 
-	current := list.head
+	current := list.Head
 
 	for current.next != nil {
 		current = current.next
@@ -67,20 +79,20 @@ func (list *LList) InsertAtBack(data int) {
 
 func (list *LList) InsertAtFront(data int) {
 	// if list is empty
-	if list.head == nil {
-		list.head = &Node{data: data, next: nil}
+	if list.Head == nil {
+		list.Head = &Node{data: data, next: nil}
 		return
 	}
 
-	newNode := &Node{data: data, next: list.head}
+	newNode := &Node{data: data, next: list.Head}
 
-	list.head = newNode
+	list.Head = newNode
 }
 
 // Insert at a specific index
 
 func (list *LList) InsertAt(data, index int) {
-	if list.head == nil && index != 0 {
+	if list.Head == nil && index != 0 {
 		fmt.Println("Linked List is empty cannot add to specific index rather than 0")
 		return
 	}
@@ -90,7 +102,7 @@ func (list *LList) InsertAt(data, index int) {
 		return
 	}
 
-	current := list.head
+	current := list.Head
 
 	for i := 0; i < index-1; i++ {
 		if current.next != nil {
@@ -114,8 +126,8 @@ func (list *LList) InsertAt(data, index int) {
 // Find the middle
 
 func (list *LList) GetMid() int {
-	slowPtr := list.head
-	fastPtr := list.head
+	slowPtr := list.Head
+	fastPtr := list.Head
 
 	for fastPtr != nil && fastPtr.next != nil {
 		slowPtr = slowPtr.next
@@ -132,11 +144,11 @@ func (list *LList) RemoveAtEnd() {
 		return
 	}
 
-	if list.head.next == nil {
-		list.head = nil
+	if list.Head.next == nil {
+		list.Head = nil
 		return
 	}
-	current := list.head
+	current := list.Head
 
 	for current.next.next != nil {
 		current = current.next
@@ -152,12 +164,12 @@ func (list *LList) DeleteFromFront() {
 		return
 	}
 
-	if list.head.next == nil {
-		list.head = nil
+	if list.Head.next == nil {
+		list.Head = nil
 		return
 	}
 
-	list.head = list.head.next
+	list.Head = list.Head.next
 
 }
 
@@ -168,14 +180,14 @@ func (list *LList) DeleteAtMiddle() {
 		return
 	}
 
-	if list.head.next == nil {
-		list.head = nil
+	if list.Head.next == nil {
+		list.Head = nil
 		return
 	}
 
 	var prev *Node
-	slowPtr := list.head
-	fastPtr := list.head
+	slowPtr := list.Head
+	fastPtr := list.Head
 
 	for fastPtr != nil && fastPtr.next != nil {
 		prev = slowPtr
@@ -195,12 +207,12 @@ func (list *LList) RemoveAt(index int) {
 		return
 	}
 
-	if list.head.next == nil {
-		list.head = nil
+	if list.Head.next == nil {
+		list.Head = nil
 		return
 	}
 
-	current := list.head
+	current := list.Head
 
 	for i := 0; i < index-1; i++ {
 		if current.next != nil {
@@ -217,4 +229,20 @@ func (list *LList) RemoveAt(index int) {
 	}
 
 	current.next = current.next.next
+}
+
+// Reverse Linked List
+
+func (list *LList) Reverse() {
+	current := list.Head
+	var prev *Node = nil
+	var next *Node = nil
+	for current != nil {
+		next = current.next
+		current.next = prev
+
+		prev = current
+		current = next
+	}
+	list.Head = prev
 }
