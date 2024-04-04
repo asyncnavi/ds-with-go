@@ -13,7 +13,6 @@ func main() {
 	list.InsertAtBack(10)
 
 	list.PrintList()
-	linked_list.NthFromEnd(list, 5)
-	linked_list.MoveLastToFront(list)
+	linked_list.FlipTailAndHead(list)
 	list.PrintList()
 }

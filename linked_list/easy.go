@@ -99,3 +99,26 @@ func MoveLastToFront(list *LList) {
 	list.Head = current
 
 }
+
+// Q 6 Flip tail and head
+
+func FlipTailAndHead(list *LList) {
+	current := list.Head
+	prev := list.Head
+
+	for current != nil && current.next != nil {
+		prev = current
+		current = current.next
+	}
+
+	current.next = list.Head.next
+	list.Head.next = nil
+	prev.next = list.Head
+	list.Head = current
+
+}
+
+// Q7
+func makeMiddleNodeHead(list *LList) {
+
+}
