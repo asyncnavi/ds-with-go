@@ -88,11 +88,14 @@ func NthFromEnd(list *LList, n int) {
 
 func MoveLastToFront(list *LList) {
 	current := list.Head
-
-	for current != nil {
+	prev := list.Head
+	for current.next != nil {
+		prev = current
 		current = current.next
 	}
 
-	list.Head, current.next = current.next, list.Head
+	prev.next = nil
+	current.next = list.Head
+	list.Head = current
 
 }
