@@ -119,6 +119,23 @@ func FlipTailAndHead(list *LList) {
 }
 
 // Q7
-func makeMiddleNodeHead(list *LList) {
+func MakeMiddleNodeHead(list *LList) {
+
+	if list.Head == nil || list.Head.next == nil {
+		return
+	}
+
+	var prev *Node
+	slowPtr := list.Head
+	fastPtr := list.Head
+
+	for fastPtr != nil && fastPtr.next.next != nil {
+		prev = slowPtr
+		slowPtr = slowPtr.next
+		fastPtr = fastPtr.next.next
+	}
+	prev.next = prev.next.next
+	slowPtr.next = list.Head
+	list.Head = slowPtr
 
 }
