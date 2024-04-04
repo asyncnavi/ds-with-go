@@ -118,7 +118,8 @@ func FlipTailAndHead(list *LList) {
 
 }
 
-// Q7
+// Q7 Make middle node the head node
+
 func MakeMiddleNodeHead(list *LList) {
 
 	if list.Head == nil || list.Head.next == nil {
@@ -138,4 +139,113 @@ func MakeMiddleNodeHead(list *LList) {
 	slowPtr.next = list.Head
 	list.Head = slowPtr
 
+}
+
+// Q 8
+
+func Reverse(list *LList) {
+	current := list.Head
+	var prev *Node = nil
+	var next *Node = nil
+	for current != nil {
+		next = current.next
+		current.next = prev
+
+		prev = current
+		current = next
+	}
+	list.Head = prev
+}
+
+// Q 9
+
+func AddOneUtil(list *LList) {
+	Reverse(list)
+	current := list.Head
+	var temp *Node
+	carry := 1
+	var sum int
+	for current != nil {
+		sum = carry + current.data
+
+		if sum >= 10 {
+			carry = 1
+		} else {
+			carry = 0
+		}
+
+		sum = sum % 10
+		current.data = sum
+
+		// testing
+		if temp != nil {
+			fmt.Printf(" current : %d, temp : %d ", current.data, temp.data)
+		}
+
+		temp = current
+		current = current.next
+
+	}
+
+	if carry > 0 {
+		temp.next = &Node{data: carry, next: nil}
+	}
+	Reverse(list)
+}
+
+// Q 10
+
+func getNodeValue(node *Node) int {
+	if node != nil {
+		return node.data
+	} else {
+		return 0
+	}
+}
+
+func AddTwoList(l1 *LList, l2 *LList) *LList {
+	Reverse(l1)
+	Reverse(l2)
+
+	curr1 := l1.Head
+	curr2 := l2.Head
+	carry := 0
+	var sum int
+	var temp *Node
+	var prev *Node
+	res := &LList{}
+	for curr1 != nil || curr2 != nil {
+		sum = carry + getNodeValue(curr1) + getNodeValue(curr2)
+		if sum >= 10 {
+			carry = 1
+		} else {
+			carry = 0
+		}
+
+		sum = sum % 10
+		temp = &Node{data: sum, next: nil}
+
+		if res.Head == nil {
+			res.Head = temp
+		} else {
+			prev.next = temp
+		}
+		prev = temp
+
+		if curr1 != nil {
+			curr1 = curr1.next
+		}
+
+		if curr2 != nil {
+			curr2 = curr2.next
+		}
+	}
+
+	if carry > 0 {
+		temp.next = &Node{data: carry, next: nil}
+	}
+	Reverse(res)
+	Reverse(l1)
+	Reverse(l2)
+	return res
 }

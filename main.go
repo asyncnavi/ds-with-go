@@ -6,14 +6,14 @@ import (
 
 func main() {
 	list := &linked_list.LList{}
-	list.InsertAtBack(40)
-	list.InsertAtBack(20)
-	list.InsertAtBack(15)
-	list.InsertAtBack(5)
-	list.InsertAtBack(10)
-	list.InsertAtBack(20)
-	list.PrintList()
-	linked_list.MakeMiddleNodeHead(list)
-	list.PrintList()
+	list1 := &linked_list.LList{}
+	list.InsertAtBack(1)
+	list.InsertAtBack(9)
+	list.InsertAtBack(8)
+	list.InsertAtBack(9)
 
+	list1.InsertAtBack(1)
+	list1.InsertAtBack(9)
+
+	linked_list.AddTwoList(list, list1).PrintList()
 }
