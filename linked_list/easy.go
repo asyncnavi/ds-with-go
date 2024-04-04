@@ -160,13 +160,15 @@ func Reverse(list *LList) {
 // Q 9
 
 func AddOneUtil(list *LList) {
+	// Reverse the list
 	Reverse(list)
-	current := list.Head
-	var temp *Node
+
+	cursor := list.Head
+	var prev *Node
 	carry := 1
 	var sum int
-	for current != nil {
-		sum = carry + current.data
+	for cursor != nil {
+		sum = carry + cursor.data
 
 		if sum >= 10 {
 			carry = 1
@@ -175,21 +177,15 @@ func AddOneUtil(list *LList) {
 		}
 
 		sum = sum % 10
-		current.data = sum
-
-		// testing
-		if temp != nil {
-			fmt.Printf(" current : %d, temp : %d ", current.data, temp.data)
-		}
-
-		temp = current
-		current = current.next
-
+		cursor.data = sum
+		prev = cursor
+		cursor = cursor.next
 	}
 
 	if carry > 0 {
-		temp.next = &Node{data: carry, next: nil}
+		prev.next = &Node{data: carry, next: nil}
 	}
+
 	Reverse(list)
 }
 
