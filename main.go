@@ -2,17 +2,18 @@ package main
 
 import (
 	"ds-go/linked_list"
-	"fmt"
 )
 
 func main() {
 	list := &linked_list.LList{}
 	list.InsertAtBack(1)
 	list.InsertAtBack(9)
-	list.InsertAtBack(9)
-	list.InsertAtBack(9)
 	list.InsertAtBack(8)
-	list.InsertAtBack(10)
+	list.InsertAtBack(9)
+	list.InsertAtBack(6)
+	list.InsertAtBack(7)
 
-	fmt.Println(linked_list.SumOfLastNNode(list, 5))
+	list.PrintList()
+	linked_list.PairWiseSwap(list)
+	list.PrintList()
 }

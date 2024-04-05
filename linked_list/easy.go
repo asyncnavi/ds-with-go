@@ -274,3 +274,22 @@ func SumOfLastNNode(list *LList, n int) int {
 
 	return sum
 }
+
+func PairWiseSwap(list *LList) {
+	current := list.Head
+
+	if current != nil && current.next != nil {
+		list.Head = current.next
+		current.next = current.next.next
+		list.Head.next = current
+	}
+	for current != nil && current.next != nil && current.next.next != nil {
+		next := current.next
+		current.next = next.next
+		next.next = current.next.next
+		current.next.next = next
+
+		current = next
+	}
+
+}
