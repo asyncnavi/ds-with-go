@@ -1,6 +1,8 @@
 package linked_list
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Q1 Check if the linked list are identical or no
 
@@ -244,4 +246,31 @@ func AddTwoList(l1 *LList, l2 *LList) *LList {
 	Reverse(l1)
 	Reverse(l2)
 	return res
+}
+
+// Q11
+
+func SumOfLastNNode(list *LList, n int) int {
+	// Count the number of node in the list
+
+	cursor := list.Head
+	count := 0
+	for cursor != nil {
+		count++
+		cursor = cursor.next
+	}
+
+	cursor = list.Head
+	pos := 0
+	startPoint := count - n
+	sum := 0
+	for cursor != nil {
+		if !(pos < startPoint) {
+			sum = cursor.data + sum
+		}
+		pos++
+		cursor = cursor.next
+	}
+
+	return sum
 }
