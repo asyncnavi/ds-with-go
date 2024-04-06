@@ -275,6 +275,8 @@ func SumOfLastNNode(list *LList, n int) int {
 	return sum
 }
 
+// Q 12
+
 func PairWiseSwap(list *LList) {
 	current := list.Head
 
@@ -293,3 +295,27 @@ func PairWiseSwap(list *LList) {
 	}
 
 }
+
+// Q 13
+
+func RemoveKthNode(list *LList, k int) {
+	count := list.GetOrPrintSize(false)
+	pos := 1
+	cursor := list.Head
+	var prev *Node
+	for count > pos+k {
+
+		for pos := 1; pos < k; pos++ {
+			prev = cursor
+			cursor = cursor.next
+		}
+		prev.next = cursor.next
+		cursor = prev.next
+
+		pos = pos + k
+
+	}
+
+}
+
+// Q 14

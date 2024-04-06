@@ -14,6 +14,6 @@ func main() {
 	list.InsertAtBack(7)
 
 	list.PrintList()
-	linked_list.PairWiseSwap(list)
+	linked_list.RemoveKthNode(list, 3)
 	list.PrintList()
 }
