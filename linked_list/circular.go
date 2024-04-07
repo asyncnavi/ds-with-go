@@ -38,3 +38,23 @@ func (list *CList) PushEnd(data int) {
 	current.next = newNode
 
 }
+
+func (list *CList) PushBeg(data int) {
+
+	if list.head == nil {
+		newNode := &Node{data: data, next: nil}
+		list.head = newNode
+		list.head.next = newNode
+		return
+	}
+
+	newNode := &Node{data: data, next: list.head}
+
+	current := list.head
+	for current.next != list.head {
+		current = current.next
+	}
+	list.head = newNode
+	current.next = newNode
+
+}
