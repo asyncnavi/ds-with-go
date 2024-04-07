@@ -58,3 +58,23 @@ func (list *CList) PushBeg(data int) {
 	current.next = newNode
 
 }
+
+func (list *CList) GetMid() (int, int, bool) {
+
+	if list.head == nil {
+		fmt.Printf("List is Empty")
+	}
+
+	slowCursor := list.head
+	fastCursor := list.head
+
+	for fastCursor.next != list.head && fastCursor.next.next != list.head {
+		slowCursor = slowCursor.next
+		fastCursor = fastCursor.next.next
+	}
+
+	if fastCursor.next != list.head {
+		return slowCursor.data, slowCursor.next.data, false
+	}
+	return slowCursor.data, 0, true
+}
