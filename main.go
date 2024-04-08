@@ -1,18 +1,15 @@
 package main
 
 import (
-	"ds-go/linked_list"
+	"ds-go/stack"
 )
 
 func main() {
-	list := &linked_list.DList{}
-	list.InsertAtEnd(5)
-	list.InsertAtEnd(6)
-	list.InsertAtEnd(7)
-	list.InsertAtEnd(8)
-	list.InsertAtEnd(4)
-	list.InsertAtEnd(10)
-
-	list.PrintList()
+	st := &stack.Stack{}
+	st.Init(10)
+	st.Push(2)
+	st.Push(5)
+	st.Push(8)
+	st.Peek(2)
 
 }
