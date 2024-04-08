@@ -10,6 +10,6 @@ func main() {
 	st.Push(2)
 	st.Push(5)
 	st.Push(8)
-	st.Peek(2)
+	st.Peek()
 
 }
