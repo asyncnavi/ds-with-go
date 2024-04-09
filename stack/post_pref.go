@@ -1,8 +1,6 @@
 package stack
 
-import "fmt"
-
-func isOperator(ch string) bool {
+func IsOperator(ch string) bool {
 	switch ch {
 	case "+", "-", "*", "/":
 		return true
@@ -15,7 +13,7 @@ func PostToPrefix(expr string) string {
 	st.New(len(expr))
 
 	for _, ch := range expr {
-		if isOperator(string(ch)) {
+		if IsOperator(string(ch)) {
 			op1 := st.Pop().(string)
 			op2 := st.Pop().(string)
 
@@ -26,8 +24,6 @@ func PostToPrefix(expr string) string {
 			st.Push(string(ch))
 		}
 
-		st.Print()
-		fmt.Println()
 	}
 
 	res := ""

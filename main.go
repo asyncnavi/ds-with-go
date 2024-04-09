@@ -7,5 +7,5 @@ import (
 
 func main() {
 
-	fmt.Print(stack.PostToPrefix("abc*+"))
+	fmt.Print(stack.PrefixToPost("+a*bc"))
 }
