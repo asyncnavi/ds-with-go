@@ -49,7 +49,6 @@ func (list *CList) PushBeg(data int) {
 	}
 
 	newNode := &Node{data: data, next: list.head}
-
 	current := list.head
 	for current.next != list.head {
 		current = current.next

@@ -1,51 +1,62 @@
 package stack
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type Stack[C any] struct {
+type Stack[T any] struct {
 	top   int
 	max   int
-	nodes []C
+	items []T
 }
 
-func (stack *Stack[T]) Init(max int) {
-	stack.top = -1
-	stack.max = max
-	stack.nodes = make([]T, max)
+func (s *Stack[T]) New(max int) {
+	s.top = -1
+	s.max = max
+	s.items = make([]T, max)
 }
 
-func (stack *Stack[T]) Print() {
-	for i := 0; i <= stack.top; i++ {
-		fmt.Print(stack.nodes[i])
+func (s *Stack[T]) Print() {
+	top := s.top
+	fmt.Print("Stack: [")
+
+	for top != -1 {
+		fmt.Printf("%v, ", s.items[top])
+		top--
 	}
-	fmt.Println()
+	fmt.Print("]")
+
 }
 
-func (stack *Stack[T]) Push(data T) {
-	if stack.top >= stack.max-1 {
-		fmt.Println("Stack overflow")
+func (s *Stack[T]) Push(item T) {
+	if s.top >= s.max-1 {
+		fmt.Println("Stack is overflowed")
 		return
 	}
-	stack.top++
-	stack.nodes[stack.top] = data
+
+	s.top++
+	s.items[s.top] = item
 }
 
-func (stack *Stack[T]) Pop() {
-	if stack.top == -1 {
+func (s *Stack[T]) Pop() interface{} {
+	if s.top == -1 {
 		fmt.Println("Stack is underflow")
-		return
+		return nil
 	}
-	stack.top--
+	popped := s.items[s.top]
+	s.top--
+	return popped
 }
 
-func (stack *Stack[T]) Peek() {
-	if stack.top == -1 {
+func (s *Stack[T]) Peek() interface{} {
+	if s.top == -1 {
 		fmt.Println("Stack is underflow")
-		return
+		return nil
 	}
-	println(stack.nodes[stack.top])
+
+	return s.items[s.top]
 }
 
-func (stack *Stack[T]) IsEmpty() bool {
-	return stack.top == -1
+func (s *Stack[T]) IsEmpty() bool {
+	return s.top == -1
 }
