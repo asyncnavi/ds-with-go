@@ -11,10 +11,6 @@ type LStack struct {
 	top *Node
 }
 
-func (s *LStack) New() {
-	s.top = nil
-}
-
 func (s *LStack) Print() {
 	cursor := s.top
 	fmt.Print("Stack:")
@@ -52,4 +48,7 @@ func (s *LStack) Peak() interface{} {
 
 func (s *LStack) IsEmpty() bool {
 	return s.top == nil
+}
+func (s *LStack) New() {
+	s.top = nil
 }
