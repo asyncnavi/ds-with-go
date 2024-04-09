@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	name := "({[})"
+	name := "sandhu"
 
-	fmt.Print(stack.MatchBraces(name))
+	fmt.Print(stack.Reverse(name))
 }
