@@ -1,12 +1,13 @@
 package main
 
-import (
-	"ds-go/stack"
-	"fmt"
-)
+import "ds-go/stack"
 
 func main() {
-	name := "sandhu"
 
-	fmt.Print(stack.Reverse(name))
+	st := stack.LStack{}
+	st.New()
+	st.Push(20)
+	st.Push(50)
+	st.Push(30)
+	st.Print()
 }
