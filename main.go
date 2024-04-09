@@ -1,16 +1,12 @@
 package main
 
-import "ds-go/stack"
+import (
+	"ds-go/stack"
+	"fmt"
+)
 
 func main() {
+	name := "({[})"
 
-	st := stack.Stack[rune]{}
-	st.New(10)
-	st.Push('c')
-	st.Push('x')
-	st.Push('v')
-	st.Push('t')
-
-	st.Print()
-
+	fmt.Print(stack.MatchBraces(name))
 }
