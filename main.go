@@ -7,5 +7,5 @@ import (
 
 func main() {
 
-	fmt.Print(stack.PrefixToPost("+a*bc"))
+	fmt.Print(stack.InfixToPost("a+b*(c^d-e)"))
 }
