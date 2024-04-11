@@ -3,11 +3,11 @@ package main
 import "ds-go/queue"
 
 func main() {
-	q := queue.Queue[string]{}
-	q.New(10)
+	q := queue.LQueue[string]{}
+	q.New()
 	q.Enqueue("Hello")
 	q.Enqueue("Navraj")
 	q.Enqueue("Sandhu")
-
+	println(q.Dequeue().(string))
 	q.Print()
 }
