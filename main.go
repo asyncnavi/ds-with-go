@@ -1,11 +1,13 @@
 package main
 
-import (
-	"ds-go/stack"
-	"fmt"
-)
+import "ds-go/queue"
 
 func main() {
+	q := queue.Queue[string]{}
+	q.New(10)
+	q.Enqueue("Hello")
+	q.Enqueue("Navraj")
+	q.Enqueue("Sandhu")
 
-	fmt.Print(stack.InfixToPre("x+y*z/w+u"))
+	q.Print()
 }
