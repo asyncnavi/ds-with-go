@@ -57,3 +57,7 @@ func (q *LQueue[T]) Dequeue() interface{} {
 	q.front = next
 	return data
 }
+
+func (q *LQueue[T]) IsEmpty() bool {
+	return q.front == nil
+}
