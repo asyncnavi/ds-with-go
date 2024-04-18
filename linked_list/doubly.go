@@ -1,6 +1,8 @@
 package linked_list
 
+
 import "fmt"
+
 
 type DNode struct {
 	prev *DNode
@@ -22,7 +24,7 @@ func (list *DList) PrintList() {
 }
 
 func (list *DList) InsertAtEnd(data int) {
-
+  
 	if list.head == nil {
 		list.head = &DNode{prev: nil, data: data, next: nil}
 		return

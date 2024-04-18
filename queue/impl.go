@@ -43,3 +43,7 @@ func (q *Queue[T]) Dequeue() interface{} {
 	item := q.entries[q.front]
 	return item
 }
+
+func (q *Queue[T]) IsEmpty() bool {
+	return q.rear == q.front
+}

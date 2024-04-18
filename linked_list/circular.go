@@ -20,7 +20,6 @@ func (list *CList) PrintList() {
 }
 
 func (list *CList) PushEnd(data int) {
-
 	if list.head == nil {
 		newNode := &Node{data: data, next: nil}
 		list.head = newNode
@@ -36,11 +35,9 @@ func (list *CList) PushEnd(data int) {
 	}
 
 	current.next = newNode
-
 }
 
 func (list *CList) PushBeg(data int) {
-
 	if list.head == nil {
 		newNode := &Node{data: data, next: nil}
 		list.head = newNode
@@ -55,11 +52,9 @@ func (list *CList) PushBeg(data int) {
 	}
 	list.head = newNode
 	current.next = newNode
-
 }
 
 func (list *CList) GetMid() (int, int, bool) {
-
 	if list.head == nil {
 		fmt.Printf("List is Empty")
 	}
