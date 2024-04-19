@@ -22,6 +22,41 @@ func Preorder(root *Node) {
 	}
 }
 
+func PrintTree(root *Node) {
+	if root == nil {
+		return
+	}
+
+	// Create a queue to store nodes at each level
+	queue := []*Node{root}
+
+	for len(queue) > 0 {
+		// Determine the number of nodes at the current level
+		levelSize := len(queue)
+
+		// Print nodes at the current level
+		for i := 0; i < levelSize; i++ {
+			// Pop the front node from the queue
+			node := queue[0]
+			queue = queue[1:]
+
+			// Print the data of the current node
+			if node == nil {
+				fmt.Print(" ʘ ")
+			} else {
+				fmt.Printf(" %d ", node.data)
+
+				// Enqueue the left and right children of the current node
+				queue = append(queue, node.left)
+				queue = append(queue, node.right)
+			}
+		}
+
+		// Move to the next line after printing a level
+		fmt.Println()
+	}
+}
+
 func CreateTree() *Node {
 	scanner := bufio.NewScanner(os.Stdin)
 	q := queue.Queue[*Node]{}
@@ -32,10 +67,10 @@ func CreateTree() *Node {
 	root := &Node{data: x, left: nil, right: nil}
 	q.Enqueue(root)
 
-	for q.IsEmpty() {
+	for !q.IsEmpty() {
 		p := q.Dequeue().(*Node)
 
-		fmt.Println("Enter left child (or -1 to skip):")
+		fmt.Printf("Enter left child for %d (or -1 to skip):", p.data)
 		scanner.Scan()
 		x, _ := strconv.Atoi(scanner.Text())
 		if x != -1 {
@@ -44,7 +79,7 @@ func CreateTree() *Node {
 			q.Enqueue(t)
 		}
 
-		fmt.Println("Enter right child (or -1 to skip):")
+		fmt.Printf("Enter right child for %d (or -1 to skip):", p.data)
 		scanner.Scan()
 		x, _ = strconv.Atoi(scanner.Text())
 		if x != -1 {
