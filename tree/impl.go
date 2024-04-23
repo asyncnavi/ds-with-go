@@ -14,14 +14,6 @@ type Node struct {
 	right *Node
 }
 
-func Preorder(root *Node) {
-	if root != nil {
-		fmt.Printf("%d ", root.data)
-		Preorder(root.left)
-		Preorder(root.right)
-	}
-}
-
 func PrintTree(root *Node) {
 	if root == nil {
 		return
