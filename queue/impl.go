@@ -19,7 +19,6 @@ func (q *Queue[T]) New(max int) {
 }
 
 func (q *Queue[T]) Print() {
-
 	for i := q.front + 1; i <= q.rear; i++ {
 		fmt.Printf("%v, ", q.entries[i])
 	}

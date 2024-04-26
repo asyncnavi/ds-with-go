@@ -27,20 +27,15 @@ func PrintTree(root *Node) {
 		return
 	}
 
-	// Create a queue to store nodes at each level
 	queue := []*Node{root}
 
 	for len(queue) > 0 {
-		// Determine the number of nodes at the current level
 		levelSize := len(queue)
 
-		// Print nodes at the current level
 		for i := 0; i < levelSize; i++ {
-			// Pop the front node from the queue
 			node := queue[0]
 			queue = queue[1:]
 
-			// Print the data of the current node
 			if node == nil {
 				fmt.Print(" ʘ ")
 			} else {
