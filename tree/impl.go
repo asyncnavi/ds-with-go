@@ -41,13 +41,11 @@ func PrintTree(root *Node) {
 			} else {
 				fmt.Printf(" %d ", node.data)
 
-				// Enqueue the left and right children of the current node
 				queue = append(queue, node.left)
 				queue = append(queue, node.right)
 			}
 		}
 
-		// Move to the next line after printing a level
 		fmt.Println()
 	}
 }
