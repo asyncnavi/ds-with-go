@@ -9,7 +9,3 @@ func PreOrderR(root *Node) {
 		PreOrderR(root.right)
 	}
 }
-
-func InOrderR(root *Node) {
-	++--**--+++
-}
