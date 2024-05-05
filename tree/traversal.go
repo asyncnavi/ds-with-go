@@ -36,6 +36,31 @@ func PreOrderR(root *Node) {
 		PreOrderR(root.right)
 	}
 }
+func InOrder(root *Node) {
+	if root == nil {
+		return
+	}
+
+	st := &stack.LStack{}
+	st.New()
+
+	curr := root
+
+	for curr != nil || !st.IsEmpty() {
+		// Reach the leftmost node of the current subtree
+		for curr != nil {
+			st.Push(curr)
+			curr = curr.left
+		}
+
+		// Current node is nil, so we pop from stack
+		curr = st.Pop().(*Node)
+		fmt.Printf("%d ", curr.data)
+
+		// Move to the right subtree
+		curr = curr.right
+	}
+}
 
 func InOrderR(root *Node) {
 	if root != nil {
