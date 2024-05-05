@@ -9,3 +9,11 @@ func PreOrderR(root *Node) {
 		PreOrderR(root.right)
 	}
 }
+
+func InOrderR(root *Node) {
+	if root != nil {
+		PreOrderR(root.left)
+		fmt.Printf("%d", root.data)
+		PreOrderR(root.right)
+	}
+}
