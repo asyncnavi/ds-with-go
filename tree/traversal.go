@@ -69,3 +69,32 @@ func InOrderR(root *Node) {
 		PreOrderR(root.right)
 	}
 }
+
+func LevelTraversal(root *Node) {
+	if root == nil {
+		return
+	}
+
+	q := []*Node{root}
+
+	for len(q) > 0 {
+		levelSize := len(q)
+
+		for i := 0; i < levelSize; i++ {
+			node := q[0]
+
+			// Enqueue current( first ) element
+			q := q[1:]
+
+			if node == nil {
+				fmt.Println("*")
+			} else {
+				fmt.Printf("%d", node.data)
+
+				q = append(q, node.left)
+				q = append(q, node.right)
+			}
+		}
+	}
+	fmt.Println()
+}
