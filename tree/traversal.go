@@ -17,7 +17,7 @@ func PreOrder(root *Node) {
 
 	for !st.IsEmpty() {
 		node := st.Pop().(*Node)
-		fmt.Printf("%d ", node.data)
+		fmt.Printf("%d ", node.Data)
 
 		// Push the right child first so that it gets processed after the left child
 		if node.right != nil {
@@ -31,7 +31,7 @@ func PreOrder(root *Node) {
 
 func PreOrderR(root *Node) {
 	if root != nil {
-		fmt.Printf("%d ", root.data)
+		fmt.Printf("%d ", root.Data)
 		PreOrderR(root.left)
 		PreOrderR(root.right)
 	}
@@ -55,7 +55,7 @@ func InOrder(root *Node) {
 
 		// Current node is nil, so we pop from stack
 		curr = st.Pop().(*Node)
-		fmt.Printf("%d ", curr.data)
+		fmt.Printf("%d ", curr.Data)
 
 		// Move to the right subtree
 		curr = curr.right
@@ -65,7 +65,7 @@ func InOrder(root *Node) {
 func InOrderR(root *Node) {
 	if root != nil {
 		PreOrderR(root.left)
-		fmt.Printf("%d", root.data)
+		fmt.Printf("%d", root.Data)
 		PreOrderR(root.right)
 	}
 }
@@ -89,7 +89,7 @@ func LevelTraversal(root *Node) {
 			if node == nil {
 				fmt.Println("*")
 			} else {
-				fmt.Printf("%d", node.data)
+				fmt.Printf("%d", node.Data)
 
 				q = append(q, node.left)
 				q = append(q, node.right)
