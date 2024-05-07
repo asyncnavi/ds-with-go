@@ -14,3 +14,15 @@ func search(root *Node, key int) bool {
 
 	return false
 }
+
+func RSearch(root *Node, key int) bool {
+	if root == nil {
+		return false
+	} else if root.data == key {
+		return true
+	} else if root.data > key {
+		RSearch(root.left, key)
+	} else {
+		RSearch(root.right, key)
+	}
+}
