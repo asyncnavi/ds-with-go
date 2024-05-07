@@ -16,7 +16,7 @@ type Node struct {
 
 func Preorder(root *Node) {
 	if root != nil {
-		fmt.Printf("%d ", root.Data)
+		fmt.Printf("%d ", root.data)
 		Preorder(root.left)
 		Preorder(root.right)
 	}
@@ -39,7 +39,7 @@ func PrintTree(root *Node) {
 			if node == nil {
 				fmt.Print(" ʘ ")
 			} else {
-				fmt.Printf(" %d ", node.Data)
+				fmt.Printf(" %d ", node.data)
 
 				queue = append(queue, node.left)
 				queue = append(queue, node.right)
@@ -57,26 +57,26 @@ func CreateTree() *Node {
 	fmt.Println("Enter the root value:")
 	scanner.Scan()
 	x, _ := strconv.Atoi(scanner.Text())
-	root := &Node{Data: x, left: nil, right: nil}
+	root := &Node{data: x, left: nil, right: nil}
 	q.Enqueue(root)
 
 	for !q.IsEmpty() {
 		p := q.Dequeue().(*Node)
 
-		fmt.Printf("Enter left child for %d (or -1 to skip):", p.Data)
+		fmt.Printf("Enter left child for %d (or -1 to skip):", p.data)
 		scanner.Scan()
 		x, _ := strconv.Atoi(scanner.Text())
 		if x != -1 {
-			t := &Node{Data: x, left: nil, right: nil}
+			t := &Node{data: x, left: nil, right: nil}
 			p.left = t
 			q.Enqueue(t)
 		}
 
-		fmt.Printf("Enter right child for %d (or -1 to skip):", p.Data)
+		fmt.Printf("Enter right child for %d (or -1 to skip):", p.data)
 		scanner.Scan()
 		x, _ = strconv.Atoi(scanner.Text())
 		if x != -1 {
-			t := &Node{Data: x, left: nil, right: nil}
+			t := &Node{data: x, left: nil, right: nil}
 			p.right = t
 			q.Enqueue(t)
 		}
