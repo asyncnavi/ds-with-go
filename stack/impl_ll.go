@@ -28,7 +28,7 @@ func (s *LStack) Push(data interface{}) {
 
 func (s *LStack) Pop() interface{} {
 	if s.IsEmpty() {
-		fmt.Println("Stack is underflow")
+		fmt.Println("underflow")
 		return nil
 	}
 	popped := s.top.data
@@ -38,7 +38,7 @@ func (s *LStack) Pop() interface{} {
 
 func (s *LStack) Peak() interface{} {
 	if s.IsEmpty() {
-		fmt.Println("Stack is underflow")
+		fmt.Println("underflow")
 		return nil
 	}
 
